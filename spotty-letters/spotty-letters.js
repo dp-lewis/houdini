@@ -1,12 +1,16 @@
 class SpottyLetters {
+  seed = 6
+
   static get inputProperties() {
-    return ['--spot-color', '--spot-size', '--spot-bg-color'];
+    return ['--spot-color', '--spot-size', '--spot-bg-color', '--spot-seed'];
   }
 
   paint(ctx, size, properties) {
     const spotColor = properties.get('--spot-color').toString() || 'black';
     const spotBgColor = properties.get('--spot-bg-color').toString() || 'white';
     const spotSize = parseFloat(properties.get('--spot-size').toString()) || 5;
+    this.seed = parseFloat(properties.get('--spot-seed').toString()) || 6;
+
 
     ctx.fillStyle = spotBgColor;
     ctx.fillRect(0, 0, size.width, size.height);
@@ -22,7 +26,7 @@ class SpottyLetters {
         const x = xOffset + col * spotSize * 2 + spotSize;
         const y = yOffset + row * spotSize * 2 + spotSize;
         ctx.beginPath();
-        ctx.arc(x, y, this.clamp(Math.random() * spotSize, spotSize / 2, spotSize), 0, 2 * Math.PI);
+        ctx.arc(x, y, this.clamp(this.seededRandom() * spotSize, spotSize / 2, spotSize), 0, 2 * Math.PI);
         ctx.fill();
       }
     }
@@ -30,6 +34,16 @@ class SpottyLetters {
 
   clamp(value, min,max) {
     return Math.min(Math.max(value, min), max);
+  }
+ 
+  seededRandom() {
+      const max = 1;
+      const min = 0;
+   
+      this.seed = (this.seed * 9301 + 49297) % 233280;
+      const rnd = this.seed / 233280;
+   
+      return min + rnd * (max - min);
   }
 }
 

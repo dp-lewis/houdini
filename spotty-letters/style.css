@@ -16,6 +16,12 @@
     inherits: false;
 }
 
+@property --spot-seed {
+    syntax: '<number>';
+    initial-value: 6;
+    inherits: false;
+}
+
 html {
     background: #333333;
     font-family: sans-serif;
@@ -25,6 +31,12 @@ body {
     display: flex;
     align-content: center;
     height: 100vh;
+    background: paint(spotty-letters);
+    --spot-bg-color: #333;
+    --spot-color: #444;
+    --spot-size: 20;
+    --spot-seed: 6;
+
 }
 div {
     flex: 1;
@@ -34,10 +46,11 @@ div {
     text-align: center;
 }
 
-.spotty-text {
+h1 {
     --spot-bg-color: #87CEEB;
     --spot-color: #0b5ca0;
     --spot-size: 20;
+    --spot-seed: 6;
     background: paint(spotty-letters);
     font-size: 10rem;
     color: transparent;
@@ -45,4 +58,6 @@ div {
     font-weight: 700;
     text-transform: uppercase;
     -webkit-text-stroke: white 3px;
+    line-height: .9;
+    filter: drop-shadow(0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.75));
 }
