@@ -1,0 +1,48 @@
+@property --spot-color {
+    syntax: '<color>';
+    initial-value: black;
+    inherits: false;
+}
+
+@property --spot-bg-color {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+@property --spot-size {
+    syntax: '<number>';
+    initial-value: 5;
+    inherits: false;
+}
+
+html {
+    background: #333333;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    align-content: center;
+    height: 100vh;
+}
+div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.spotty-text {
+    --spot-bg-color: #87CEEB;
+    --spot-color: #0b5ca0;
+    --spot-size: 20;
+    background: paint(spotty-letters);
+    font-size: 10rem;
+    color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    text-transform: uppercase;
+    -webkit-text-stroke: white 3px;
+}
