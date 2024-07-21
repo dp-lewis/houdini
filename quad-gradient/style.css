@@ -1,0 +1,65 @@
+@property --gradient-color-1 {
+    syntax: '<color>';
+    initial-value: red;
+    inherits: false;
+}
+
+@property --gradient-color-2 {
+    syntax: '<color>';
+    initial-value: blue;
+    inherits: false;
+}
+
+@property --gradient-color-3 {
+    syntax: '<color>';
+    initial-value: green;
+    inherits: false;
+}
+
+@property --gradient-color-4 {
+    syntax: '<color>';
+    initial-value: yellow;
+    inherits: false;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+div {
+    --gradient-color-1: #d003ff;
+    --gradient-color-2: #fffb20;
+    --gradient-color-3: #056920;
+    --gradient-color-4: red;
+    background: paint(quad-gradient);
+    flex: 1;
+    align-content: center;
+    text-align: center;
+    padding: 1rem;
+
+}
+  
+h1 {
+    --gradient-color-4: #d003ff;
+    --gradient-color-3: #fffb20;
+    --gradient-color-2: #056920;
+    --gradient-color-1: red;
+    margin: 0;
+    font-size: 4rem;
+    background: paint(quad-gradient);
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    -webkit-text-stroke: white 3px;
+    filter: drop-shadow(0.3rem 0.3rem 0.3rem rgba(0, 0, 0, 0.4));
+}
+
+@media (min-width: 60rem) {
+    h1 {
+        font-size: 10rem;
+    }
+}
